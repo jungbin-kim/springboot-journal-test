@@ -5,6 +5,7 @@ package com.apress.spring.services;
 
 import com.apress.spring.domain.Movie;
 import com.apress.spring.repository.MovieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,10 +14,8 @@ import java.util.List;
 @Service
 public class MovieService {
 
-    private final MovieRepository movieRepository;
-    public MovieService(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
-    }
+    @Autowired
+    private MovieRepository movieRepository;
 
     @Transactional(readOnly = true)
     public Movie findByTitle(String title) {

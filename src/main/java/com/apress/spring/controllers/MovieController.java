@@ -5,6 +5,7 @@ package com.apress.spring.controllers;
 
 import com.apress.spring.domain.Movie;
 import com.apress.spring.services.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,9 @@ import java.util.List;
 
 @Controller
 public class MovieController {
-    private final MovieService movieService;
 
-    public MovieController(MovieService movieService) {
-        this.movieService = movieService;
-    }
+    @Autowired
+    private MovieService movieService;
 
     @RequestMapping(value = "/m1", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public @ResponseBody Movie findByTitle(@RequestParam String title) {
